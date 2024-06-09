@@ -1,0 +1,136 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Karla", sans-serif;
+    background: #f5f7fb;
+}
+
+/* Main Layout for the app */
+
+.main-container {
+
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 1em 0;
+}
+
+.yellow-blob {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.blue-blob {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Quiz Container for Start and Questions */
+.get-started {
+    height: 100vh;
+}
+
+.get-started,
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.25em;
+}
+
+.btn-check,
+.btn-start {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #4d5b9e;
+    border: none;
+    border-radius: 1rem;
+    color: #f5f7fb;
+    padding: .75em 2em;
+}
+
+.quiz-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25em;
+    width: 100%;
+}
+
+.response-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.result-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #293264;
+
+}
+
+/* Question Component */
+.question-container {
+    width: 100%;
+    max-width: 800px;
+    border-bottom: 1px solid #dbdef0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25em 0;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #4d589e;
+    border-radius: 1.2em;
+    cursor: pointer;
+    user-select: none;
+}
+
+input[type="radio"]:checked + label {
+    background: #d6dbf5;
+    /*color: white;*/
+    border-color: #d6dbf5;
+}
+
+input[type="radio"]:checked + label.correct {
+    background: #94d7a2;
+    border-color: #94d7a2;
+}
+
+input[type="radio"]:checked + label.incorrect {
+    background: #f8bcbc;
+    border-color: #f8bcbc;
+}
+
+label.correct {
+    background: #94d7a2;
+    border: #94d7a2;
+}
+
+label.incorrect {
+    background: #f8bcbc;
+    border: #f8bcbc;
+}
