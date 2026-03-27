@@ -45,25 +45,24 @@ function App() {
     }
 
 
-  useEffect(() => {
-      if (isStarted && !isFinished || !isStarted && isFinished) {
-          getQuestions()
-              .then(res => res.json())
-              .then(data =>  {
-                  setQuestions(data.results.map(question => {
-                      const answers = shuffle([question['correct_answer'], ...question['incorrect_answers']])
-                      return {
-                          ...question,
-                          answers
-                      }
-                  }))
-              });
-      }
+    useEffect(() => {
+        if (isStarted && !isFinished || !isStarted && isFinished) {
+            getQuestions()
+                .then(res => res.json())
+                .then(data =>  {
+                    setQuestions(data.results.map(question => {
+                        const answers = shuffle([question['correct_answer'], ...question['incorrect_answers']])
+                        return {
+                            ...question,
+                            answers
+                        }
+                    }))
+            });
+        }
 
-  }, [isStarted, isFinished]);
-    // console.log(questions);
+    }, [isStarted, isFinished]);
 
-  const component = isStarted && questions.length > 0 ? (
+    const component = isStarted && questions.length > 0 ? (
     <Quiz
         questions={questions}
         responses={responses}
@@ -73,16 +72,16 @@ function App() {
         responseText={responseText}
         />
 
-  ) : (
-    <GetStarted getStarted={() => setIsStarted(true)} />
-  );
-  return (
-      <main className="main-container">
-        <img src={yellowBlob} className="yellow-blob" alt="Yellow Blob"/>
-        <img src={blueBlob} className="blue-blob" alt="Blue Blob"/>
-        {component}
-      </main>
-  );
+    ) : (
+        <GetStarted getStarted={() => setIsStarted(true)} />
+    );
+    return (
+        <main className="main-container">
+            <img src={yellowBlob} className="yellow-blob" alt="Yellow Blob"/>
+            <img src={blueBlob} className="blue-blob" alt="Blue Blob"/>
+            {component}
+        </main>
+    );
 }
 
 export default App;
